@@ -1,3 +1,6 @@
 import { writeFileSync } from 'fs';
 
-writeFileSync('notes.txt', 'This file was created by Node.js');
+writeFileSync(
+  'notes.txt',
+  'My name is Walker and this text was updated from Node.JS'
+);
