@@ -3,8 +3,6 @@ const { hideBin } = require('yargs/helpers');
 const notes = require('./notes.js');
 // const argv = yargs(hideBin(process.argv)).argv;
 
-// import chalk from 'chalk';
-
 // Customize yargs version
 yargs(hideBin(process.argv)).version('1.1.2');
 
@@ -27,7 +25,7 @@ yargs(hideBin(process.argv))
         type: 'string',
       },
     },
-    handler: function (argv) {
+    handler(argv) {
       notes.addNote(argv.title, argv.body);
     },
   })
@@ -45,7 +43,7 @@ yargs(hideBin(process.argv))
         type: 'string',
       },
     },
-    handler: function (argv) {
+    handler(argv) {
       notes.removeNote(argv.title);
     },
   })
@@ -55,8 +53,8 @@ yargs(hideBin(process.argv))
   .command({
     command: 'list',
     describe: 'View a list of notes',
-    handler: function () {
-      console.log('Here are your notes...');
+    handler() {
+      notes.listNotes();
     },
   })
   .parse();
@@ -65,8 +63,15 @@ yargs(hideBin(process.argv))
   .command({
     command: 'read',
     describe: 'Read a note',
-    handler: function () {
-      console.log('Take a look at this note...');
+    builder: {
+      title: {
+        demandOption: true,
+        describe: 'Read this note',
+        type: 'string',
+      },
+    },
+    handler(argv) {
+      notes.readNote(argv.title);
     },
   })
   .parse();
