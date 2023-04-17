@@ -25,7 +25,7 @@ const addNote = function (title, body) {
 
 const removeNote = function (title) {
   const notes = loadNotes();
-  console.log('Removing your note titled: ' + title + '...');
+  console.log('Removing your Note titled: ' + title + '...');
 };
 
 const saveNotes = function (notes) {

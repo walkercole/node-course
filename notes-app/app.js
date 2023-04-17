@@ -41,7 +41,7 @@ yargs(hideBin(process.argv))
     builder: {
       title: {
         demandOption: true,
-        describe: 'Note to be deleted',
+        describe: 'Title of Note to be deleted',
         type: 'string',
       },
     },
