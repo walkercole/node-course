@@ -18,7 +18,10 @@ const addNote = function (title, body) {
       body: body,
     });
     saveNotes(notes);
-    console.log(chalk.inverse.green('New Note Added!'));
+    console.log(
+      chalk.inverse.green('New Note Added! Titled: ') +
+        chalk.inverse.bold(title)
+    );
   } else {
     console.log(chalk.inverse.red('Note Title Already Taken...'));
   }
@@ -32,28 +35,10 @@ const removeNote = function (title) {
   });
   if (notes.length > notesToKeep.length) {
     console.log(chalk.inverse.green('Note ' + title + ' has been removed!'));
+    saveNotes(notesToKeep);
   } else {
     console.log(chalk.inverse.red('No Note Removed: Title Not Found...'));
   }
-
-  saveNotes(notesToKeep);
-
-  // Another way to do it by singling out the note to be removed and applying
-  // console logs for better UX, but uses another filter unnecessarily...
-
-  //   const matchingNote = notes.filter(function (note) {
-  //     return note.title === title;
-  //   });
-
-  //   if (matchingNote.length === 0) {
-  //     console.log(chalk.inverse.red('No Note Removed: Title Not Found...'));
-  //   } else {
-  //     const newList = notes.filter(function (note) {
-  //       return note.title !== title;
-  //     });
-  //     saveNotes(newList);
-  //     console.log(chalk.inverse.green('Note ' + title + ' has been removed!'));
-  //   }
 };
 
 const saveNotes = function (notes) {
