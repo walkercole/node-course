@@ -1,9 +1,9 @@
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
+const notes = require('./notes.js');
 // const argv = yargs(hideBin(process.argv)).argv;
 
 // import chalk from 'chalk';
-// import getNotes from './notes.js';
 
 // Customize yargs version
 yargs(hideBin(process.argv)).version('1.1.2');
@@ -28,7 +28,7 @@ yargs(hideBin(process.argv))
       },
     },
     handler: function (argv) {
-      console.log('Title: ' + argv.title + `\n` + ' Body: ' + argv.body);
+      notes.addNote(argv.title, argv.body);
     },
   })
   .parse();
