@@ -25,7 +25,20 @@ const addNote = function (title, body) {
 
 const removeNote = function (title) {
   const notes = loadNotes();
-  console.log('Removing your Note titled: ' + title + '...');
+
+  const matchingNote = notes.filter(function (note) {
+    return note.title === title;
+  });
+
+  if (matchingNote.length === 0) {
+    console.log('No Note Removed: Title Not Found...');
+  } else {
+    const newList = notes.filter(function (note) {
+      return note.title !== title;
+    });
+    saveNotes(newList);
+    console.log('Note ' + title + ' has been removed!');
+  }
 };
 
 const saveNotes = function (notes) {
