@@ -56,7 +56,7 @@ const readNote = (title) => {
     );
   } else {
     console.log(
-      chalk.bold.red.inverse('No Note Found With The Title: ' + title)
+      chalk.bold.red('No Note Found With The Title: ' + chalk.white(title))
     );
   }
 };
