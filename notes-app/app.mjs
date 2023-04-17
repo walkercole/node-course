@@ -1,12 +1,22 @@
-import pkg from 'validator';
-const { isEmail, isURL } = pkg;
-import getNotes from './notes.js';
-import chalk from 'chalk';
+const yargs = require('yargs/yargs');
+const { hideBin } = require('yargs/helpers')
+const argv = yargs(hideBin(process.argv)).argv
 
-const note = getNotes();
-const greenMsg = chalk.bold.inverse.green('Success!!');
-console.log(chalk.green(note));
-console.log(greenMsg);
+// import chalk from 'chalk';
+// import getNotes from './notes.js';
 
-console.log(chalk.bold.inverse.blue(isEmail('walker@gmail.com')));
-console.log(chalk.bold.black.inverse(isURL('walkercole.github.io')));
+// Customize yargs version
+yargs(hideBin(process.argv)).version('1.1.2');
+
+// CRUD commands with yargs
+
+// Create Add note
+yargs(hideBin(process.argv)).command({
+  command: 'add',
+  describe: 'Add a new note...',
+  handler: function () {
+    console.log('Adding a new note');
+  },
+});
+
+console.log(yargs(hideBin(process.argv)).argv);
