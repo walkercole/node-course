@@ -1,10 +1,6 @@
 const fs = require('fs');
 const chalk = require('chalk');
 
-const getNotes = () => {
-  return 'Your notes...';
-};
-
 const addNote = (title, body) => {
   const notes = loadNotes();
   // look thru notes array for duplicate titles using array filter method
@@ -81,7 +77,6 @@ const loadNotes = () => {
 };
 
 module.exports = {
-  getNotes: getNotes,
   addNote: addNote,
   removeNote: removeNote,
   listNotes: listNotes,
