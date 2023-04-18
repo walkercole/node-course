@@ -6,6 +6,7 @@ const addNote = (title, body) => {
   // look thru notes array for duplicate titles using array filter method
   // const duplicateNotes = notes.filter((note) => note.title === title);
   const duplicateNote = notes.find((note) => note.title === title);
+
   if (!duplicateNote) {
     notes.push({
       title: title,
