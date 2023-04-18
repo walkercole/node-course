@@ -1,0 +1,9 @@
+{
+  "name": "weather-app",
+  "dependencies": {
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "@types/request": "^2.48.8"
+  }
+}
