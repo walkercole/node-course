@@ -1,8 +1,26 @@
-const request = require('request');
-const url =
-  'http://api.weatherstack.com/current?access_key=ad908a88613699a10e5c0c01d1b73279&query=New%20York';
+const geocode = require('./utils/geocode')
+const forecast = require('./utils/forecast')
 
-request({ url: url }, (error, response) => {
-  const data = JSON.parse(response.body);
-  console.log(data.current);
-});
+if (process.argv[2]) {
+  // using destructuring and setting default function parameter syntax incase of a no-value-provided error.
+  geocode(process.argv[2], (error, { lat, long, location } = {}) => {
+    if (error) {
+      return console.log(error)
+    }
+  
+    forecast(lat, long, (error, forecastData) => {
+      if (error) {
+        return console.log(error)
+      }
+  
+      console.log(location)
+      console.log(forecastData)
+    })
+    
+  })
+} else {
+  return console.log('Error: Please input a location...')
+}
+
+
+
