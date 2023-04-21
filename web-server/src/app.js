@@ -9,10 +9,11 @@ const express = require('express')
 const hbs = require('hbs')
 
 // how to get the directory path and then join with the file path to serve up the directory
-console.log(__dirname)
-console.log(path.join(__dirname, '../public'))
+// console.log(__dirname)
+// console.log(path.join(__dirname, '../public'))
 
 const app = express();
+const port = process.env.PORT || 3000
 
 // Define paths for Express config
 const publicDirPath = path.join(__dirname, '../public')
@@ -135,6 +136,6 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000...')
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}...`)
 })
